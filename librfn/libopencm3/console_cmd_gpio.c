@@ -136,7 +136,7 @@ static pt_state_t do_opendrain_cmd(console_t *c)
 		do_opendrain_toggle(gpio->port, gpio->pin);
 	} else if (action == pulse) {
 		do_opendrain_toggle(gpio->port, gpio->pin);
-		*t = time_now() + 1000000;
+		*t = time_now() + 100000;
 		PT_WAIT_UNTIL(fibre_timeout(*t));
 		do_opendrain_toggle(gpio->port, gpio->pin);
 	} else {
@@ -169,7 +169,7 @@ pt_state_t console_gpio_do_cmd(console_t *c)
 		gpio_toggle(gpio->port, gpio->pin);
 	} else if (action == pulse) {
 		gpio_toggle(gpio->port, gpio->pin);
-		*t = time_now() + 1000000;
+		*t = time_now() + 100000;
 		PT_WAIT_UNTIL(fibre_timeout(*t));
 		gpio_toggle(gpio->port, gpio->pin);
 	} else if (action == read_state) {
